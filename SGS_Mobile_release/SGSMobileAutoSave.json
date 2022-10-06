@@ -1,13 +1,5 @@
 {
     "LastController": "tcpctrl",
-    "ROSctrl": {
-        "myctrl": {
-            "__hostname": "127.0.0.1",
-            "__master": "http://127.0.0.1:11311/",
-            "topic": "chatter"
-        },
-        "status": true
-    },
     "manual_keyboard": {
         "status": true
     },
