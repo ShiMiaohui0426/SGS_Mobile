@@ -1,0 +1,24 @@
+{
+    "LastController": "tcpctrl",
+    "ROSctrl": {
+        "myctrl": {
+            "__hostname": "127.0.0.1",
+            "__master": "http://127.0.0.1:11311/",
+            "topic": "chatter"
+        },
+        "status": true
+    },
+    "manual_keyboard": {
+        "status": true
+    },
+    "override": 20,
+    "tcpctrl": {
+        "status": true,
+        "tcpctrl_para": {
+            "port": "3030"
+        }
+    },
+    "udpctrl": {
+        "status": false
+    }
+}
