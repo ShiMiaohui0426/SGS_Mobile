@@ -1,5 +1,13 @@
 {
     "LastController": "tcpctrl",
+    "ROSctrl": {
+        "myctrl": {
+            "__hostname": "",
+            "__master": "",
+            "topic": ""
+        },
+        "status": false
+    },
     "manual_keyboard": {
         "status": true
     },
@@ -7,7 +15,7 @@
     "tcpctrl": {
         "status": true,
         "tcpctrl_para": {
-            "port": "3030"
+            "port": "303"
         }
     },
     "udpctrl": {
