@@ -57,7 +57,7 @@ void MotionCtrl::pluginInit()
     //    Test of stackWidget
 
 
-    QDir dir(QDir::currentPath()+"/lib");
+    QDir dir(QDir::currentPath()+"/ctrllib");
     QStringList filters;
     filters<<QString("*.so");
     dir.setFilter(QDir::Files | QDir::NoSymLinks); //设置类型过滤器，只为文件格式

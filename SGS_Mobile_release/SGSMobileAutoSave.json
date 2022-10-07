@@ -15,7 +15,7 @@
     "tcpctrl": {
         "status": true,
         "tcpctrl_para": {
-            "port": "303"
+            "port": "3030"
         }
     },
     "udpctrl": {
