@@ -1,0 +1,4 @@
+/snap/clion/204/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /media/ros/367566670DC99923/EPOS-Linux-Library-En/EPOS_Linux_Library/examples/HelloEposCmd -B /media/ros/367566670DC99923/EPOS-Linux-Library-En/EPOS_Linux_Library/examples/HelloEposCmd/cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /media/ros/367566670DC99923/EPOS-Linux-Library-En/EPOS_Linux_Library/examples/HelloEposCmd/cmake-build-debug

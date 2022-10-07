@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -Wall -rdynamic CMakeFiles/HelloEposCmd.dir/HelloEposCmd.cpp.o -o HelloEposCmd  -lEposCmd.so 
