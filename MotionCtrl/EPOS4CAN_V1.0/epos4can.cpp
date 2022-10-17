@@ -95,37 +95,53 @@ int EPOS4CAN::OpenDevice()
     strcpy(pPortName,std.c_str());
 
     qDebug()<<"Open device...";
+    const unsigned short maxStrSize=100;
+    char portSel[maxStrSize];
+    int endOfSel;
+    VCS_GetPortNameSelection(pDeviceName,pProtocolStackName,pInterfaceName,1,portSel,maxStrSize,&endOfSel,p_pErrorCode);
+    g_pKeyHandle=0;
+    while(g_pKeyHandle==0){
+        strcpy(pPortName,portSel);
+        g_pKeyHandle = VCS_OpenDevice(pDeviceName, pProtocolStackName, pInterfaceName, pPortName, p_pErrorCode);
 
-
-    g_pKeyHandle = VCS_OpenDevice(pDeviceName, pProtocolStackName, pInterfaceName, pPortName, p_pErrorCode);
-    qDebug()<<"handle:"<<g_pKeyHandle;
-    if(*p_pErrorCode!=0){
-        qDebug()<<"open error code"<<*p_pErrorCode;
-    };
-    if(g_pKeyHandle!=0 && *p_pErrorCode == 0)
-    {
-        unsigned int lBaudrate = 0;
-        unsigned int lTimeout = 0;
-
-        if(VCS_GetProtocolStackSettings(g_pKeyHandle, &lBaudrate, &lTimeout, p_pErrorCode)!=0)
+        if(*p_pErrorCode!=0){
+            qDebug()<<"open error code"<<*p_pErrorCode;
+        };
+        if(g_pKeyHandle!=0 && *p_pErrorCode == 0)
         {
-            if(VCS_SetProtocolStackSettings(g_pKeyHandle, g_baudrate, lTimeout, p_pErrorCode)!=0)
+            unsigned int lBaudrate = 0;
+            unsigned int lTimeout = 0;
+
+            if(VCS_GetProtocolStackSettings(g_pKeyHandle, &lBaudrate, &lTimeout, p_pErrorCode)!=0)
             {
-                if(VCS_GetProtocolStackSettings(g_pKeyHandle, &lBaudrate, &lTimeout, p_pErrorCode)!=0)
+                if(VCS_SetProtocolStackSettings(g_pKeyHandle, g_baudrate, lTimeout, p_pErrorCode)!=0)
                 {
-                    if(g_baudrate==(int)lBaudrate)
+                    if(VCS_GetProtocolStackSettings(g_pKeyHandle, &lBaudrate, &lTimeout, p_pErrorCode)!=0)
                     {
-                        lResult = MMC_SUCCESS;
-                        qDebug()<<"Open device success";
+                        if(g_baudrate==(int)lBaudrate)
+                        {
+                            lResult = MMC_SUCCESS;
+                            qDebug()<<"Open device success";
+                            qDebug()<<"handle:"<<g_pKeyHandle;
+                            qDebug()<<"Port"<<pPortName;
+                        }
                     }
                 }
             }
         }
-    }
-    else
-    {
-        g_pKeyHandle = 0;
+        else
+        {
+            g_pKeyHandle = 0;
+            qDebug()<<"open error code"<<*p_pErrorCode;
+            qDebug()<<"try port:"<<pPortName;
+        };
+        if(endOfSel)break;
+        else VCS_GetPortNameSelection(pDeviceName,pProtocolStackName,pInterfaceName,1,portSel,maxStrSize,&endOfSel,p_pErrorCode);
+
     };
+
+
+
 
 
     return lResult;

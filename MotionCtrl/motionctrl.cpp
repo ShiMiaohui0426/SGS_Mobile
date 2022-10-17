@@ -122,7 +122,7 @@ void MotionCtrl::SetVelocity(omniVelocity pTARVelocity)
 
 
     for (int i =0;i<4 ;i++ ) {
-        double alpha=(-90*i+135)*3.14159/180;
+        double alpha=(-90*i+135+90)*3.14159/180;
         DriverVelocity[i]=-sin(alpha)*TARVelocity.vx+cos(alpha)*TARVelocity.vy+0.2*1.414*3.1415*TARVelocity.omega/180;
         DriverVelocity[i]=DriverVelocity[i]*1000*60/(2*3.14159*_WheelRadius);
         //        qDebug()<<DriverVelocity[i]*override/100;
